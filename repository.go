@@ -1,4 +1,4 @@
-package repomodel
+package mongorepo
 
 import (
 	"gopkg.in/mgo.v2"

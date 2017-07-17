@@ -9,7 +9,6 @@ var dbName string = "testcooking" //database name
 
 type Repository struct {
 	TableName string
-	DecodeTo  interface{}
 }
 
 func (r *Repository) Insert(t interface{}) error {

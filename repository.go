@@ -5,7 +5,7 @@ import (
 	"gopkg.in/mgo.v2/bson"
 )
 
-var dbName string = "testcooking"
+var dbName string = "testcooking" //database name
 
 type Repository struct {
 	TableName string
@@ -55,7 +55,7 @@ func (r *Repository) Select(filter interface{}, take int) (interface{}, error) {
 }
 
 func OpenSession() *mgo.Session {
-	session, err := mgo.Dial("localhost")
+	session, err := mgo.Dial("localhost") //server
 
 	if err != nil {
 		panic(err)

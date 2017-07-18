@@ -1,6 +1,8 @@
 package mongorepo
 
 import (
+	"fmt"
+
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 )
@@ -17,9 +19,29 @@ func (r *Repository) Insert(t interface{}) error {
 	defer session.Close()
 
 	c := Table(session, r.TableName)
+
 	err := c.Insert(&t)
 
 	return err
+}
+
+func (r *Repository) InsertUnique(t interface{}, uniqueKeyValue interface{}) (interface{}, error) {
+
+	session := OpenSession()
+	defer session.Close()
+
+	c := Table(session, r.TableName)
+	exists := t
+	err := c.Find(uniqueKeyValue).One(&exists)
+	if err != nil {
+		return nil, err
+	} else if exists != nil {
+		return exists, err
+	}
+
+	err = c.Insert(&t)
+
+	return t, err
 }
 
 func Table(s *mgo.Session, tName string) *mgo.Collection {

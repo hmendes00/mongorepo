@@ -32,12 +32,10 @@ func (r *Repository) InsertUnique(t interface{}, uniqueKeyValue interface{}) (in
 	exists := t
 	err := c.Find(uniqueKeyValue).One(&exists)
 	if err != nil {
-		return nil, err
+		err = c.Insert(&t)
 	} else if exists != nil {
 		return exists, err
 	}
-
-	err = c.Insert(&t)
 
 	return t, err
 }

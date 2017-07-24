@@ -1,6 +1,6 @@
 # mongorepo
 Provide some generic functions to insert/update/select data from a mongo database.
-Depedencies:
+<br>Depedencies:
 <br>
 https://gopkg.in/mgo.v2/bson
 

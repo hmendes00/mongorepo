@@ -2,7 +2,7 @@
 Provide some generic functions to insert/update/select data from a mongo database.
 
 You will need to import two libraries to use this repo:
-<br> https://github.com/mitchellh/mapstructure <br>
+<br>
 https://gopkg.in/mgo.v2/bson
 
 Quick example of how to use it (Note that Ingredients, User and Recipes are pseudo-classes):
